@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Memori</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: #aef;
+      text-align: center;
+    }
+
+    .title{
+      color:#f7a;
+    }
+
+    .link {
+      text-decoration: none;
+      font-size: 24px;
+      color: #357;
+      transition: all 0.5s ease;
+    }
+
+    .link:hover {
+      font-size: 36px;
+      text-shadow: 0px 0px 12px #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">Memori</h1>
+  <p class="link">请选择WiFi</p>
+  <div id="list"></div>
+</body>
+
+<script>
+  //获取wifi列表
+  function get_wifi() {
+    var xhr=new XMLHttpRequest();
+    xhr.open("GET","/scan_wifi");
+    xhr.send();
+    xhr.onload=function(){
+      var dic=JSON.parse(xhr.responseText);
+      var div=document.getElementById("list");
+      console.log(dic);
+      for(var i=0;i<dic.length;i++){
+        div.innerHTML+='<p class="link" onclick=\'set_wifi("'+dic[i]+'")\'>'+dic[i]+'</p>';
+      }
+    }
+  }
+
+  //输入wifi密码并上传设置
+  function set_wifi(ssid){
+    var pwd=window.prompt("请输入"+ssid+"的密码awa");
+    console.log(pwd);
+    if(pwd){
+      var xhr=new XMLHttpRequest();
+      xhr.open("GET","/set_wifi?ssid="+ssid+"&pwd="+pwd);
+      xhr.send();
+    }
+  }
+
+
+  window.onload = function () {
+    get_wifi();
+  }
+</script>
+
+</html>

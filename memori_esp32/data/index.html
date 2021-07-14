@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Memori</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: #aef;
+      text-align: center;
+    }
+
+    .title{
+      color:#f7a;
+    }
+
+    .link {
+      text-decoration: none;
+      font-size: 24px;
+      color: #357;
+      transition: all 0.5s ease;
+    }
+
+    .link:hover {
+      font-size: 36px;
+      text-shadow: 0px 0px 12px #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">Memori</h1>
+  <a class="link" href="/wifi.html">WiFi配置</a>
+  <p id="status"></p>
+</body>
+
+<script>
+  //获取状态信息
+  function get_status() {
+    var xhr=new XMLHttpRequest();
+    xhr.open("GET","/get_status");
+    xhr.send();
+    xhr.onload=function(){
+      var dic=JSON.parse(xhr.responseText);
+      update_status(dic);
+    }
+  }
+
+  //更新状态信息
+  function update_status(dic){
+    document.getElementById("status").innerHTML=JSON.stringify(dic);
+  }
+
+  window.onload = function () {
+    get_status();
+  }
+</script>
+
+</html>
