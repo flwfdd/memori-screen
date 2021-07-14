@@ -2,11 +2,11 @@
 
 > **mem**ory with **ori**gin
 
-这是一个基于ESP32的项目，灵感来源是辉光管。
+这是一个基于ESP32的项目，灵感来源于辉光管。
 
 硬件上，使用了五块1.14寸的IPS显示屏，并使用tf卡进行存储，还附加了时钟模块、气压、海拔、光强、温度、湿度传感器。
 
-嵌入式固件上，使用`PlatformIO`和`VS Code`编写代码，使用了[Arduino框架]([espressif/arduino-esp32: Arduino core for the ESP32 (github.com)](https://github.com/espressif/arduino-esp32))。支持交互式更改WiFi连接，自动同步时间，自动从服务器更新屏幕显示内容并动态绘制。
+嵌入式固件上，使用`PlatformIO`和`VS Code`编写代码，使用了[Arduino框架](https://github.com/espressif/arduino-esp32)。支持交互式更改WiFi连接，自动同步时间，自动从服务器更新屏幕显示内容并动态绘制。
 
 应该还会做一个网页和相应后端来定制和更新屏幕显示内容，但现在还没有做（摸鱼ing....
 
